@@ -1343,6 +1343,9 @@ class Juice < Minitest::Test
 
     json = Oj.dump({'x' => {'a' => 1, 'b' => nil }, 'y' => nil}, :omit_nil => true, :mode => :null)
     assert_equal(%|{"x":{"a":1}}|, json)
+
+    json = Oj.dump({'x' => {}, 'y' => nil}, :omit_nil => true, :mode => :null)
+    assert_equal(%|{}|, json)
   end
 
   def dump_and_load(obj, trace=false)
